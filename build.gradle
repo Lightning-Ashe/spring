@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+
+    }
+}
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
