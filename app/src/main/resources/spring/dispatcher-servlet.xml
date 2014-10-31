@@ -6,27 +6,21 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="com.spring"/>
-
     <mvc:annotation-driven />
-    <mvc:default-servlet-handler />
+
     <mvc:resources mapping="/**" location="/" />
 
+    <context:component-scan base-package="com.spring"/>
 
-    <bean id="beanViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
-        <property name="order" value="10"></property>
+    <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="/WEB-INF/html/"/>
     </bean>
 
-    <!--bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
-        <property name="order" value="20" />
-    </bean-->
-
-    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/pages"/>
-        <property name="suffix" value=".jsp"/>
-        <property name="order" value="30"></property>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".html"/>
+        <property name="exposeSpringMacroHelpers" value="true"/>
     </bean>
 
 

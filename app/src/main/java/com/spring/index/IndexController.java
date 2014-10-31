@@ -1,4 +1,4 @@
-package com.spring.main;
+package com.spring.index;
 
 
 import org.slf4j.Logger;
@@ -14,12 +14,12 @@ import javax.servlet.http.HttpServletRequest;
  */
 
 @Controller
-@RequestMapping("/main")
-public class MainController {
+@RequestMapping("/")
+public class IndexController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
-    @RequestMapping("/index")
+    @RequestMapping
     public String index(ModelMap modelMap, HttpServletRequest request) {
         try {
 
@@ -29,7 +29,7 @@ public class MainController {
             LOGGER.debug("error occured => {}", e);
         }
 
-        return "/index";
+        return "index";
     }
 
 
